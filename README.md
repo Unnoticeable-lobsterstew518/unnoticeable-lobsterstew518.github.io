@@ -10,16 +10,22 @@ index.html              page unique du site
 assets/content.js       TOUT le texte (FR + EN) — c'est le fichier à modifier
 assets/app.js           moteur du site (pas besoin d'y toucher)
 assets/style.css        apparence
+assets/fond.svg         fond de page
+docs/                   CV en PDF (FR et EN)
 images/                 images rangées par projet
 .nojekyll               dit à GitHub de servir les fichiers tels quels
-telecharger_images.py   récupère les images de l'ancien Google Site (à lancer une fois)
 ```
+
+## Mettre à jour le site
+
+Sur GitHub : « Add file » → « Upload files », glisser les fichiers ou dossiers
+modifiés, puis « Commit changes ». Les anciens fichiers sont remplacés.
 
 ## Adresses utiles
 
-- Accueil : `https://<pseudo>.github.io/`
-- Version anglaise forcée : `https://<pseudo>.github.io/?lang=en`
-- Un projet précis : `https://<pseudo>.github.io/#/projet/stage-technicien`
+- Accueil : `https://armand-navarre.github.io/`
+- Version anglaise forcée : `https://armand-navarre.github.io/?lang=en`
+- Un projet précis : `https://armand-navarre.github.io/#projet-stage-technicien`
 
 Sans paramètre, le site s'affiche dans la langue du navigateur du visiteur,
 puis retient le choix fait avec le bouton FR/EN.

@@ -8,12 +8,13 @@ const SITE = {
   name: "Armand NAVARRE",
   email: "armand.nvre@gmail.com",
   linkedin: "", // ex. "https://www.linkedin.com/in/ton-profil" (laisser vide pour masquer)
-  // CV téléchargeables (un bouton par langue ; laisser vide pour masquer)
+  // CV : le bouton ouvre celui de la langue affichée (laisser vide pour masquer)
   cv: { fr: "docs/CV_Armand_Navarre_FR.pdf", en: "docs/CV_Armand_Navarre_EN.pdf" },
 };
 
 const UI = {
   home:        { fr: "Accueil", en: "Home" },
+  phelma:      { fr: "Ingénieur Phelma", en: "Phelma engineering" },
   but1:        { fr: "BUT 1", en: "BUT Year 1" },
   but2:        { fr: "BUT 2", en: "BUT Year 2" },
   but3:        { fr: "BUT 3", en: "BUT Year 3" },
@@ -29,77 +30,102 @@ const UI = {
   hello:       { fr: "Bonjour, je suis", en: "Hi, I'm" },
   seeWork:     { fr: "Voir mes projets", en: "See my projects" },
   contactMe:   { fr: "Me contacter", en: "Contact me" },
-  cvFr:        { fr: "CV en français", en: "CV in French" },
-  cvEn:        { fr: "CV en anglais", en: "CV in English" },
-  keySkills:   { fr: "Compétences clés", en: "Key skills" },
-  explore:     { fr: "Explorer mes projets", en: "Explore my projects" },
+  cvBtn:       { fr: "Mon CV", en: "My CV" },
+  keySkills:   { fr: "Ce que je sais faire", en: "What I can do" },
+  explore:     { fr: "Projets récents à Phelma", en: "Recent projects at Phelma" },
+  earlier:     { fr: "Avant Phelma : BUT Mesures Physiques", en: "Before Phelma: BUT in Physical Measurements" },
+  selfTaught:  { fr: "En autodidacte", en: "Self-taught" },
   seeYear:     { fr: "Voir les projets", en: "See the projects" },
   notFound:    { fr: "Page introuvable.", en: "Page not found." },
+  inBrief:     { fr: "En bref", en: "In brief" },
+  seeAllSkills:{ fr: "Voir le bilan complet", en: "See the full summary" },
+  provenIn:    { fr: "Mis en œuvre dans", en: "Applied in" },
+  coursework:  { fr: "Enseignements SEI", en: "SEI coursework" },
 };
 
 const HOME = {
-  title:   { fr: "Mon portfolio", en: "My portfolio" },
+  kicker: { fr: "Élève ingénieur · Grenoble INP – Phelma, filière SEI", en: "Engineering student · Grenoble INP – Phelma, SEI track" },
   tagline: {
-    fr: "Élève ingénieur en électronique à Grenoble INP – Phelma, filière SEI (Systèmes Électroniques Intégrés).",
-    en: "Electronics engineering student at Grenoble INP – Phelma, SEI track (Integrated Electronic Systems).",
+    fr: "Je conçois des circuits numériques, du code RTL jusqu'au layout.",
+    en: "I design digital circuits, from RTL code down to layout.",
   },
   intro: {
-    fr: "Avant l'école d'ingénieurs, j'ai suivi un BUT Mesures Physiques en 3 ans à l'IUT de Blois, avec deux stages : un stage de recherche en acoustique ultrasonore à Helsinki et un stage de technicien analyste sur un banc d'essai de moteurs fusée. Ce portfolio présente mes projets et mes expériences.",
-    en: "Before engineering school, I completed a 3-year BUT (Bachelor of Technology) in Physical Measurements at IUT de Blois, including two internships: a research internship in ultrasonic acoustics in Helsinki and a test analyst internship on a rocket engine test bench. This portfolio presents my projects and experience.",
+    fr: "En 2e année à Phelma, en Systèmes Électroniques Intégrés. Avant cela : trois ans de BUT Mesures Physiques et deux stages en instrumentation, chez ArianeGroup et à l'Université d'Helsinki.",
+    en: "Second-year student at Phelma, in Integrated Electronic Systems. Before that: a 3-year BUT in Physical Measurements and two instrumentation internships, at ArianeGroup and at the University of Helsinki.",
+  },
+  // Ce que je recherche : à mettre à jour selon la candidature
+  seeking: {
+    label: { fr: "Je recherche", en: "Looking for" },
+    text: {
+      fr: "Un stage de 2e année de 3 à 4 mois en conception numérique (ASIC ou FPGA), en laboratoire ou en entreprise, en France ou à l'étranger. Ouvert aux sujets mixtes et analogiques.",
+      en: "A 3 to 4 month second-year internship in digital design (ASIC or FPGA), in a research lab or in industry, in France or abroad. Open to mixed-signal and analog topics.",
+    },
   },
   photo: "images/profil.jpg",
-  // Compétences clés affichées sur l'accueil (ajoute/retire librement des badges)
-  skills: [
+  // Quatre preuves chiffrées, chacune renvoie vers la page qui la détaille
+  proofs: [
+    { big: { fr: "RTL → layout", en: "RTL → layout" }, text: { fr: "Un filtre numérique mené sur FPGA et en ASIC 0,35 µm", en: "A digital filter taken to FPGA and to a 0.35 µm ASIC" }, href: "#projet-filtre-rif" },
+    { big: { fr: "14 semaines", en: "14 weeks" }, text: { fr: "chez ArianeGroup, sur un banc d'essai de moteurs fusée", en: "at ArianeGroup, on a rocket engine test bench" }, href: "#projet-stage-technicien" },
+    { big: { fr: "1 publication", en: "1 publication" }, text: { fr: "Co-auteur d'un article scientifique, Université d'Helsinki", en: "Co-author of a scientific paper, University of Helsinki" }, href: "#projet-stage-ultrasons" },
+    { big: { fr: "TOEIC 910", en: "TOEIC 910" }, text: { fr: "Anglais B2+, stage de recherche mené en anglais", en: "English B2+, research internship carried out in English" }, href: "#bilan" },
+  ],
+  // Trois blocs de compétences : des listes courtes, avec le projet qui les prouve
+  strengths: [
     {
-      title: { fr: "Électronique & instrumentation", en: "Electronics & instrumentation" },
+      tag:   { fr: "Spécialité SEI", en: "SEI specialisation" },
+      title: { fr: "Conception numérique", en: "Digital design" },
       items: {
-        fr: ["Chaînes d'instrumentation", "Métrologie & incertitudes", "Conditionnement de signal", "Acquisition EtherCAT / Modbus", "Ultrasons & transducteurs"],
-        en: ["Instrumentation chains", "Metrology & uncertainty", "Signal conditioning", "EtherCAT / Modbus acquisition", "Ultrasound & transducers"],
+        fr: ["RTL en SystemVerilog : FSM, chemin de données, testbench", "Synthèse logique : Synopsys Design Compiler", "Placement-routage : Cadence Innovus", "Full-custom : Cadence Virtuoso, DRC / LVS", "FPGA : Vivado, Xilinx Spartan-7"],
+        en: ["RTL in SystemVerilog: FSM, datapath, testbench", "Logic synthesis: Synopsys Design Compiler", "Place-and-route: Cadence Innovus", "Full-custom: Cadence Virtuoso, DRC / LVS", "FPGA: Vivado, Xilinx Spartan-7"],
       },
+      proofs: ["filtre-rif"],
     },
     {
-      title: { fr: "Programmation", en: "Programming" },
+      tag:   { fr: "Socle BUT Mesures Physiques", en: "BUT Physical Measurements foundation" },
+      title: { fr: "Instrumentation et mesure", en: "Instrumentation and measurement" },
       items: {
-        fr: ["Python (Tkinter, analyse de données)", "Arduino / ESP32", "Raspberry Pi", "R / RStudio", "HTML / CSS"],
-        en: ["Python (Tkinter, data analysis)", "Arduino / ESP32", "Raspberry Pi", "R / RStudio", "HTML / CSS"],
+        fr: ["Chaînes d'instrumentation : plus de 700 voies, EtherCAT, Modbus", "Conditionnement de signal et conversion ADC / DAC", "Métrologie et calcul d'incertitudes", "Python pour l'acquisition et l'analyse de mesures"],
+        en: ["Instrumentation chains: 700+ channels, EtherCAT, Modbus", "Signal conditioning and ADC / DAC conversion", "Metrology and uncertainty analysis", "Python for data acquisition and analysis"],
       },
+      proofs: ["stage-technicien", "sonde-echographique"],
     },
     {
-      title: { fr: "Outils", en: "Tools" },
+      tag:   { fr: "Atouts transverses", en: "Cross-functional strengths" },
+      title: { fr: "Anglais, IA et travail en équipe", en: "English, AI and teamwork" },
       items: {
-        fr: ["KiCad (circuits imprimés)", "Modélisation 3D (CAO / DAO)", "Oscilloscope & pilotage LAN", "Dewesoft", "ImageJ / Fiji", "Excel"],
-        en: ["KiCad (PCB design)", "3D modelling (CAD)", "Oscilloscope & LAN control", "Dewesoft", "ImageJ / Fiji", "Excel"],
+        fr: ["Anglais professionnel : TOEIC 910, recherche menée en anglais", "IA comme outil de travail : prompts, modèles en local, simulations Python", "Environnement Linux et conteneurs Docker", "Projets en équipes de 10 et 11 personnes"],
+        en: ["Professional English: TOEIC 910, research carried out in English", "AI as a working tool: prompting, local models, Python simulations", "Linux environment and Docker containers", "Projects in teams of 10 and 11"],
       },
-    },
-    {
-      title: { fr: "Langues & savoir-être", en: "Languages & soft skills" },
-      items: {
-        fr: ["Français (langue maternelle)", "Anglais B2 (Cambridge)", "Travail en équipe", "Rigueur & autonomie"],
-        en: ["French (native)", "English B2 (Cambridge)", "Teamwork", "Rigour & autonomy"],
-      },
+      proofs: ["energie-spatiale", "stage-ultrasons"],
     },
   ],
 };
 
-/* Années : l'ordre ici = l'ordre dans le menu et sur l'accueil */
+/* Années : l'ordre ici = l'ordre dans le menu et sur l'accueil (du plus récent au plus ancien) */
 const YEARS = [
   {
-    id: "but1",
-    title:  { fr: "BUT 1ère année", en: "BUT – Year 1" },
-    school: { fr: "IUT de Blois — BUT Mesures Physiques", en: "IUT de Blois — BUT in Physical Measurements" },
-    projects: ["pendule", "chaine-mesure"],
-  },
-  {
-    id: "but2",
-    title:  { fr: "BUT 2ème année", en: "BUT – Year 2" },
-    school: { fr: "IUT de Blois — BUT Mesures Physiques", en: "IUT de Blois — BUT in Physical Measurements" },
-    projects: ["nitrites", "stage-ultrasons"],
+    id: "phelma",
+    title:  { fr: "Cycle ingénieur – Phelma", en: "Engineering degree – Phelma" },
+    school: { fr: "Grenoble INP – Phelma — filière SEI (Systèmes Électroniques Intégrés)", en: "Grenoble INP – Phelma — SEI track (Integrated Electronic Systems)" },
+    projects: ["filtre-rif", "stage-ouvrier", "energie-spatiale"],
   },
   {
     id: "but3",
     title:  { fr: "BUT 3ème année", en: "BUT – Year 3" },
     school: { fr: "IUT de Blois — BUT Mesures Physiques", en: "IUT de Blois — BUT in Physical Measurements" },
-    projects: ["sonde-echographique", "stage-technicien"],
+    projects: ["stage-technicien", "sonde-echographique"],
+  },
+  {
+    id: "but2",
+    title:  { fr: "BUT 2ème année", en: "BUT – Year 2" },
+    school: { fr: "IUT de Blois — BUT Mesures Physiques", en: "IUT de Blois — BUT in Physical Measurements" },
+    projects: ["stage-ultrasons", "nitrites"],
+  },
+  {
+    id: "but1",
+    title:  { fr: "BUT 1ère année", en: "BUT – Year 1" },
+    school: { fr: "IUT de Blois — BUT Mesures Physiques", en: "IUT de Blois — BUT in Physical Measurements" },
+    projects: ["chaine-mesure", "pendule"],
   },
 ];
 
@@ -107,6 +133,233 @@ const YEARS = [
    Une section = { h: titre, blocks: [...], imgs: [...] }
    Un bloc = { p: texte } ou { label: titre de liste (optionnel), list: [...] } ou { note: texte } */
 const PROJECTS = {
+
+  /* ------------------------------------------------------------- PHELMA 2A */
+  "filtre-rif": {
+    kicker: { fr: "Projet VLSI · 2e année, filière SEI", en: "VLSI project · 2nd year, SEI track" },
+    title:  { fr: "Filtre RIF passe-bas : du SystemVerilog au layout", en: "Low-pass FIR filter: from SystemVerilog to layout" },
+    card:   { fr: "Filtre numérique 32 coefficients, porté sur FPGA et en ASIC AMS 0,35 µm", en: "32-tap digital filter, taken to FPGA and to an AMS 0.35 µm ASIC" },
+    cardSkills: {
+      fr: ["RTL et vérification en SystemVerilog", "Synthèse Synopsys, placement-routage Cadence Innovus", "Cellule standard full-custom (Virtuoso, DRC/LVS)"],
+      en: ["RTL and verification in SystemVerilog", "Synopsys synthesis, Cadence Innovus place-and-route", "Full-custom standard cell (Virtuoso, DRC/LVS)"],
+    },
+    thumb: "images/phelma/rif-hero.svg",
+    hero: "images/phelma/rif-hero.svg",
+    facts: [
+      { k: { fr: "Équipe", en: "Team" }, v: { fr: "Binôme", en: "Pair" } },
+      { k: { fr: "Période", en: "When" }, v: { fr: "2026", en: "2026" } },
+      { k: { fr: "Cadre", en: "Context" }, v: { fr: "TP de conception VLSI, Phelma", en: "VLSI design lab, Phelma" } },
+      { k: { fr: "Cibles", en: "Targets" }, v: { fr: "FPGA Spartan-7 · ASIC AMS 0,35 µm", en: "Spartan-7 FPGA · AMS 0.35 µm ASIC" } },
+    ],
+    brief: {
+      text: { fr: "Un filtre numérique passe-bas à 32 coefficients, conçu en binôme et mené du code RTL jusqu'à deux implémentations physiques : une carte FPGA et un layout ASIC.", en: "A 32-tap low-pass digital filter, designed in a pair and taken from RTL code to two physical implementations: an FPGA board and an ASIC layout." },
+      points: {
+        fr: ["Flot numérique complet : RTL, vérification, synthèse, placement-routage", "Deux cibles comparées : FPGA Xilinx Spartan-7 et ASIC AMS 0,35 µm", "Une cellule standard dessinée au niveau transistor"],
+        en: ["Complete digital flow: RTL, verification, synthesis, place-and-route", "Two targets compared: Xilinx Spartan-7 FPGA and AMS 0.35 µm ASIC", "One standard cell drawn at transistor level"],
+      },
+    },
+    sections: [
+      {
+        h: { fr: "Vue d'ensemble du flot", en: "Flow overview" },
+        blocks: [{ list: {
+          fr: ["Un même code RTL, deux implémentations", "Branche FPGA : Precision puis Vivado", "Branche ASIC : Design Compiler puis Innovus", "Comparaison finale : surface, timing, consommation"],
+          en: ["One RTL code base, two implementations", "FPGA branch: Precision, then Vivado", "ASIC branch: Design Compiler, then Innovus", "Final comparison: area, timing, power"],
+        } }],
+        imgs: [{ fr: "images/phelma/rif-flot-fr.svg", en: "images/phelma/rif-flot-en.svg" }],
+      },
+      {
+        n: 1, h: { fr: "Architecture du filtre", en: "Filter architecture" },
+        blocks: [{ list: {
+          fr: ["32 coefficients symétriques sur 8 bits, issus d'une étude Matlab", "Architecture séquentielle MAC : 1 multiplieur au lieu de 32", "Ligne à retard (registres à décalage) + ROM de coefficients", "32 cycles d'horloge par échantillon de sortie", "FSM de contrôle interfacée avec les FSM de l'ADC et du DAC"],
+          en: ["32 symmetric 8-bit coefficients from a Matlab study", "Sequential MAC architecture: 1 multiplier instead of 32", "Delay line (shift registers) + coefficient ROM", "32 clock cycles per output sample", "Control FSM interfaced with the ADC and DAC FSMs"],
+        } }],
+        imgs: [{ fr: "images/phelma/rif-archi-fr.svg", en: "images/phelma/rif-archi-en.svg" }],
+      },
+      {
+        n: 2, h: { fr: "RTL et vérification", en: "RTL and verification" },
+        blocks: [{ list: {
+          fr: ["Blocs delay line, MAC, ROM et buffer codés en SystemVerilog", "FSM synthétisable, chronogrammes sous WaveDrom", "Testbench : Dirac, échelon, sinus à fréquence variable", "Lint du code avec SpyGlass"],
+          en: ["Delay line, MAC, ROM and buffer blocks coded in SystemVerilog", "Synthesisable FSM, timing diagrams in WaveDrom", "Testbench: Dirac, step, variable-frequency sine", "Code linting with SpyGlass"],
+        } }],
+      },
+      {
+        n: 3, h: { fr: "Prototypage FPGA", en: "FPGA prototyping" },
+        blocks: [{ list: {
+          fr: ["Synthèse sous Precision (Mentor Graphics)", "Placement-routage sous Vivado", "Xilinx Spartan-7, carte Arty S7-50, horloge 12 MHz", "Relevé du taux d'occupation et du timing"],
+          en: ["Synthesis in Precision (Mentor Graphics)", "Place-and-route in Vivado", "Xilinx Spartan-7, Arty S7-50 board, 12 MHz clock", "Utilisation and timing reports"],
+        } }],
+      },
+      {
+        n: 4, h: { fr: "Synthèse logique ASIC", en: "ASIC logic synthesis" },
+        blocks: [{ list: {
+          fr: ["Synopsys Design Compiler, cellules standard AMS 0,35 µm", "Contrainte d'horloge 20 ns, plusieurs contraintes de surface", "Chemin critique, slacks, consommation statique et dynamique", "Simulation post-synthèse sur le même testbench"],
+          en: ["Synopsys Design Compiler, AMS 0.35 µm standard cells", "20 ns clock constraint, several area constraints", "Critical path, slacks, static and dynamic power", "Post-synthesis simulation on the same testbench"],
+        } }],
+      },
+      {
+        n: 5, h: { fr: "Placement-routage", en: "Place-and-route" },
+        blocks: [{ list: {
+          fr: ["Cadence Innovus, à partir de la netlist synthétisée", "Couronne de plots et floorplan", "Anneaux et bandes d'alimentation VDD / GND", "Arbre d'horloge (CCOpt), routage NanoRoute", "Fillers, vérifications de connectivité et DRC", "Simulation post-placement-routage"],
+          en: ["Cadence Innovus, from the synthesised netlist", "Pad ring and floorplan", "VDD / GND power rings and stripes", "Clock tree (CCOpt), NanoRoute routing", "Fillers, connectivity and DRC checks", "Post-place-and-route simulation"],
+        } }],
+        imgs: [{ fr: "images/phelma/rif-floorplan-fr.svg", en: "images/phelma/rif-floorplan-en.svg" }],
+      },
+      {
+        n: 6, h: { fr: "Cellule standard full-custom", en: "Full-custom standard cell" },
+        blocks: [{ list: {
+          fr: ["Inverseur CMOS sous Cadence Virtuoso, technologie AMS 0,35 µm", "Dimensionnement W/L : temps de propagation de 340 à 350 ps sur 0,1 pF", "Layout au gabarit des cellules standard, aboutable à gauche et à droite", "DRC et LVS sous Calibre, simulation post-extraction (Spectre)"],
+          en: ["CMOS inverter in Cadence Virtuoso, AMS 0.35 µm technology", "W/L sizing: 340 to 350 ps propagation delay on 0.1 pF", "Layout on the standard-cell template, abuttable left and right", "Calibre DRC and LVS, post-extraction simulation (Spectre)"],
+        } }],
+        imgs: [{ fr: "images/phelma/rif-inverseur-fr.svg", en: "images/phelma/rif-inverseur-en.svg" }],
+      },
+      {
+        h: { fr: "Ce que j'en retiens", en: "Takeaways" },
+        blocks: [{ list: {
+          fr: ["Une vision complète du flot, du RTL au masque", "Les compromis surface / vitesse / consommation entre FPGA et ASIC", "L'importance de l'analyse statique de timing avant le layout"],
+          en: ["An end-to-end view of the flow, from RTL to mask", "Area / speed / power trade-offs between FPGA and ASIC", "Why static timing analysis matters before layout"],
+        } }],
+      },
+      {
+        h: { fr: "Outils", en: "Tools" },
+        blocks: [{ list: {
+          fr: ["SystemVerilog, SpyGlass, WaveDrom", "Precision, Vivado", "Synopsys Design Compiler", "Cadence Innovus, Virtuoso, Spectre", "Calibre (DRC / LVS)"],
+          en: ["SystemVerilog, SpyGlass, WaveDrom", "Precision, Vivado", "Synopsys Design Compiler", "Cadence Innovus, Virtuoso, Spectre", "Calibre (DRC / LVS)"],
+        } }],
+      },
+    ],
+  },
+
+  "stage-ouvrier": {
+    kicker: { fr: "Stage ouvrier · 1re année", en: "Shop-floor internship · 1st year" },
+    title:  { fr: "Compagnon d'atelier sur pièces de précision", en: "Workshop operator on precision parts" },
+    card:   { fr: "LAMRE, PME du secteur aéronautique, Orléans · 6 semaines", en: "LAMRE, aerospace SME, Orléans (France) · 6 weeks" },
+    cardSkills: {
+      fr: ["Blocage de pièces de précision au vernis", "Contrôle qualité selon procédures", "Travail en atelier et en équipe"],
+      en: ["Locking varnish on precision parts", "Quality control following procedures", "Shop-floor teamwork"],
+    },
+    thumb: { fr: "images/phelma/ouvrier-processus-fr.svg", en: "images/phelma/ouvrier-processus-en.svg" },
+    facts: [
+      { k: { fr: "Entreprise", en: "Company" }, v: { fr: "LAMRE, PME aéronautique", en: "LAMRE, aerospace SME" } },
+      { k: { fr: "Lieu", en: "Location" }, v: { fr: "Orléans (Loiret)", en: "Orléans, France" } },
+      { k: { fr: "Durée", en: "Duration" }, v: { fr: "6 semaines, CDD", en: "6 weeks, fixed-term contract" } },
+      { k: { fr: "Poste", en: "Position" }, v: { fr: "Compagnon d'atelier", en: "Workshop operator" } },
+    ],
+    brief: {
+      text: { fr: "Six semaines en atelier de production, au blocage et au contrôle de pièces techniques de précision pour l'aéronautique.", en: "Six weeks on a production shop floor, locking and inspecting precision technical parts for the aerospace industry." },
+      points: {
+        fr: ["Un procédé en trois étapes, de l'application au contrôle final", "Des procédures qualité strictes à respecter", "La découverte du travail en atelier, côté opérateur"],
+        en: ["A three-step process, from application to final inspection", "Strict quality procedures to follow", "First-hand experience of shop-floor work as an operator"],
+      },
+    },
+    sections: [
+      {
+        h: { fr: "Le procédé", en: "The process" },
+        blocks: [{ list: {
+          fr: ["Application : vernis de blocage déposé à la seringue pneumatique, remplissage complet des logements", "Retouche après 48 h de séchage : reprise des bulles d'air et des manques", "Contrôle final : blocage complet et sans fragilité, selon le manuel des défauts"],
+          en: ["Application: locking varnish dispensed with a pneumatic syringe, cavities completely filled", "Touch-up after 48 h of drying: reworking air bubbles and gaps", "Final inspection: complete, robust locking, checked against the defect manual"],
+        } }],
+        imgs: [{ fr: "images/phelma/ouvrier-processus-fr.svg", en: "images/phelma/ouvrier-processus-en.svg" }],
+      },
+      {
+        h: { fr: "Contexte", en: "Context" },
+        blocks: [{ list: {
+          fr: ["PME familiale : instruments de mesure électromécaniques, faisceaux, cartes électroniques", "Clients du secteur aéronautique, forte exigence qualité", "Travail en équipe d'atelier"],
+          en: ["Family-run SME: electromechanical measuring instruments, harnesses, circuit boards", "Aerospace customers, high quality requirements", "Working within a shop-floor team"],
+        } }],
+      },
+      {
+        h: { fr: "Ce que j'en retiens", en: "Takeaways" },
+        blocks: [{ list: {
+          fr: ["Rigueur : un geste répété, une qualité constante", "Respect des procédures et traçabilité", "Esprit d'équipe et réalité du terrain, utiles à un futur ingénieur", "Une motivation renforcée pour la conception"],
+          en: ["Rigour: a repeated gesture, consistent quality", "Following procedures and traceability", "Team spirit and shop-floor reality, valuable for a future engineer", "A stronger motivation for design work"],
+        } }],
+      },
+    ],
+  },
+
+  "energie-spatiale": {
+    kicker: { fr: "Projet de fin d'année · 1re année", en: "End-of-year project · 1st year" },
+    title:  { fr: "Autonomie énergétique d'un système embarqué spatial", en: "Energy autonomy for a space embedded system" },
+    card:   { fr: "Équipe de 10 · état de l'art, prototype de gestion d'énergie, soutenance", en: "Team of 10 · state of the art, energy-management prototype, defence" },
+    cardSkills: {
+      fr: ["Récupération et stockage d'énergie", "Système embarqué à cadence adaptative", "Gestion de projet à 10"],
+      en: ["Energy harvesting and storage", "Adaptive-rate embedded system", "Project management in a team of 10"],
+    },
+    thumb: { fr: "images/phelma/energie-hero-fr.svg", en: "images/phelma/energie-hero-en.svg" },
+    hero: { fr: "images/phelma/energie-hero-fr.svg", en: "images/phelma/energie-hero-en.svg" },
+    facts: [
+      { k: { fr: "Équipe", en: "Team" }, v: { fr: "10 étudiants", en: "10 students" } },
+      { k: { fr: "Période", en: "When" }, v: { fr: "1re année, 2025-2026", en: "1st year, 2025-2026" } },
+      { k: { fr: "Mon rôle", en: "My role" }, v: { fr: "Récupération photovoltaïque · référent usage de l'IA", en: "Photovoltaic harvesting · AI-usage lead" } },
+      { k: { fr: "Livrables", en: "Deliverables" }, v: { fr: "Infographies · prototype · soutenance", en: "Infographics · prototype · defence" } },
+    ],
+    brief: {
+      text: { fr: "Comment alimenter une plateforme de mesure de nanosatellite (CubeSat) avec la seule énergie récupérée en orbite, y compris pendant les éclipses ?", en: "How can a nanosatellite (CubeSat) measurement platform run solely on energy harvested in orbit, including during eclipses?" },
+      points: {
+        fr: ["État de l'art des technologies de récupération d'énergie", "Prototype de gestion d'énergie à double condensateur", "Démonstration et soutenance devant un jury"],
+        en: ["State of the art of energy-harvesting technologies", "Dual-capacitor energy-management prototype", "Demonstration and defence before a jury"],
+      },
+    },
+    sections: [
+      {
+        h: { fr: "Mon rôle", en: "My role" },
+        blocks: [
+          { label: { fr: "Récupération photovoltaïque, en binôme", en: "Photovoltaic harvesting, with one teammate" }, list: {
+            fr: ["Optimisation de la récupération d'énergie du panneau solaire", "Source principale du système : rendement limité, mais la plus abondante en orbite"],
+            en: ["Optimising energy harvesting from the solar panel", "The system's main source: limited efficiency, but the most abundant in orbit"],
+          } },
+          { label: { fr: "Référent usage de l'IA dans l'équipe", en: "AI-usage lead for the team" }, list: {
+            fr: ["Registre des usages (Google Form) : outil utilisé, adéquation à la tâche, qualité du prompt, pertinence de la réponse", "Objectif : l'IA comme outil vérifié, pas comme réponse acceptée d'office", "Bilan présenté lors de la soutenance"],
+            en: ["Usage log (Google Form): tool used, fit for the task, prompt quality, relevance of the answer", "Goal: AI as a verified tool, not an answer accepted by default", "Review presented at the defence"],
+          } },
+        ],
+      },
+      {
+        n: 1, h: { fr: "État de l'art", en: "State of the art" },
+        blocks: [{ list: {
+          fr: ["Infographies sur les technologies existantes et émergentes", "Critères : rendement, ordres de grandeur de puissance", "Masse et encombrement, déterminants pour le coût de lancement", "Complexité de mise en œuvre, autonomie, durabilité"],
+          en: ["Infographics on existing and emerging technologies", "Criteria: efficiency, power orders of magnitude", "Mass and volume, the drivers of launch cost", "Implementation complexity, autonomy, durability"],
+        } }],
+      },
+      {
+        n: 2, h: { fr: "Stockage à double condensateur", en: "Dual-capacitor storage" },
+        blocks: [{ list: {
+          fr: ["Architecture tirée d'articles scientifiques", "Petit condensateur : charge rapide, absorbe les micro-coupures", "Grand condensateur : réserve pour traverser l'éclipse", "Bascule pilotée par le microcontrôleur selon l'énergie disponible", "Tension de stockage mesurée par un ADC"],
+          en: ["Architecture taken from scientific papers", "Small capacitor: fast charge, rides through micro-outages", "Large capacitor: reserve to get through the eclipse", "Switching driven by the microcontroller according to available energy", "Storage voltage measured through an ADC"],
+        } }],
+        imgs: [{ fr: "images/phelma/energie-stockage-fr.svg", en: "images/phelma/energie-stockage-en.svg" }],
+      },
+      {
+        n: 3, h: { fr: "Cadence adaptative", en: "Adaptive rate" },
+        blocks: [{ list: {
+          fr: ["Beaucoup d'énergie : mesures et émissions fréquentes", "Peu d'énergie : cadence réduite pour consommer moins", "Éclipse : mise en veille du système", "Retour du soleil : redémarrage automatique"],
+          en: ["Plenty of energy: frequent measurements and transmissions", "Little energy: reduced rate to save power", "Eclipse: system goes to sleep", "Sun returns: automatic restart"],
+        } }],
+        imgs: [{ fr: "images/phelma/energie-cadence-fr.svg", en: "images/phelma/energie-cadence-en.svg" }],
+      },
+      {
+        n: 4, h: { fr: "Validation", en: "Validation" },
+        blocks: [{ list: {
+          fr: ["Prototype : cartes électroniques, ADC, alimentation", "Simulations Python des cycles de charge et de décharge (avec Claude Code)", "Points de fonctionnement du mode veille selon l'énergie reçue", "Démonstration, puis soutenance devant un jury"],
+          en: ["Prototype: circuit boards, ADC, power supply", "Python simulations of charge and discharge cycles (with Claude Code)", "Sleep-mode operating points according to the received energy", "Demonstration, then defence before a jury"],
+        } }],
+      },
+      {
+        h: { fr: "Organisation à 10", en: "Working as a team of 10" },
+        blocks: [{ list: {
+          fr: ["Planning en diagramme de Gantt, établi en amont", "Répartition des tâches par sous-groupes", "Plateforme d'échange et Drive partagé", "Réunions intermédiaires et jalons d'avancement"],
+          en: ["Gantt chart schedule, planned up front", "Tasks split between sub-groups", "Messaging platform and shared Drive", "Interim meetings and progress milestones"],
+        } }],
+      },
+      {
+        h: { fr: "Ce que j'en retiens", en: "Takeaways" },
+        blocks: [{ list: {
+          fr: ["Concevoir un système embarqué sous contrainte d'énergie", "S'appuyer sur la littérature scientifique pour choisir une architecture", "Utiliser l'IA de façon encadrée et critique dans un projet technique", "Coordonner une équipe nombreuse sans laisser personne de côté", "Un travail salué par l'équipe enseignante"],
+          en: ["Designing an embedded system under an energy constraint", "Using the scientific literature to choose an architecture", "Using AI in a supervised, critical way in a technical project", "Coordinating a large team without leaving anyone behind", "Work praised by the teaching staff"],
+        } }],
+      },
+    ],
+  },
 
   /* ------------------------------------------------------------------ BUT 1 */
   "pendule": {
@@ -118,6 +371,12 @@ const PROJECTS = {
       en: ["Smartphone used as a trajectory sensor (Phyphox)", "Designing a scientific poster", "Metrological analysis"],
     },
     thumb: "images/vignettes/pendule.jpg",
+    facts: [
+      { k: { fr: "Équipe", en: "Team" }, v: { fr: "Binôme", en: "Pair" } },
+      { k: { fr: "Cadre", en: "Context" }, v: { fr: "Projet de BUT 1, IUT de Blois", en: "BUT year-1 project, IUT de Blois" } },
+      { k: { fr: "Outils", en: "Tools" }, v: { fr: "Phyphox · Excel · Python", en: "Phyphox · Excel · Python" } },
+      { k: { fr: "Résultat", en: "Outcome" }, v: { fr: "Poster scientifique · 17/20", en: "Scientific poster · 17/20" } },
+    ],
     sections: [
       {
         blocks: [{ p: {
@@ -187,6 +446,12 @@ const PROJECTS = {
       en: ["Programming sensors in the Arduino language", "Developing electronic circuits", "Network and website architecture"],
     },
     thumb: "images/vignettes/chaine-mesure.jpg",
+    facts: [
+      { k: { fr: "Équipe", en: "Team" }, v: { fr: "Binôme", en: "Pair" } },
+      { k: { fr: "Cadre", en: "Context" }, v: { fr: "Projet de BUT 1, IUT de Blois", en: "BUT year-1 project, IUT de Blois" } },
+      { k: { fr: "Matériel", en: "Hardware" }, v: { fr: "ESP32 · LM35 · Raspberry Pi", en: "ESP32 · LM35 · Raspberry Pi" } },
+      { k: { fr: "Livrables", en: "Deliverables" }, v: { fr: "Rapport et soutenance en anglais", en: "Report and defence in English" } },
+    ],
     sections: [
       {
         blocks: [{ p: {
@@ -272,6 +537,12 @@ const PROJECTS = {
       en: ["Arduino-controlled analogue measurement chain", "Designing a scientific poster", "Metrological analysis"],
     },
     thumb: "images/vignettes/nitrites.jpg",
+    facts: [
+      { k: { fr: "Équipe", en: "Team" }, v: { fr: "3 étudiants", en: "3 students" } },
+      { k: { fr: "Cadre", en: "Context" }, v: { fr: "Projet de BUT 2, IUT de Blois", en: "BUT year-2 project, IUT de Blois" } },
+      { k: { fr: "Méthode", en: "Method" }, v: { fr: "Absorbance à 530 nm, loi de Beer-Lambert", en: "Absorbance at 530 nm, Beer-Lambert law" } },
+      { k: { fr: "Outils", en: "Tools" }, v: { fr: "Arduino · CAO de PCB · découpe laser", en: "Arduino · PCB CAD · laser cutting" } },
+    ],
     sections: [
       {
         blocks: [{ p: {
@@ -345,6 +616,12 @@ const PROJECTS = {
     },
     thumb: "images/vignettes/stage-ultrasons.jpg",
     hero: "images/stage-ultrasons/01.jpg",
+    facts: [
+      { k: { fr: "Laboratoire", en: "Lab" }, v: { fr: "ETLA, Université d'Helsinki", en: "ETLA, University of Helsinki" } },
+      { k: { fr: "Lieu", en: "Location" }, v: { fr: "Helsinki, Finlande", en: "Helsinki, Finland" } },
+      { k: { fr: "Durée", en: "Duration" }, v: { fr: "11 semaines, avril à juin 2024", en: "11 weeks, April to June 2024" } },
+      { k: { fr: "Outils", en: "Tools" }, v: { fr: "Fiji / ImageJ · R", en: "Fiji / ImageJ · R" } },
+    ],
     sections: [
       {
         h: { fr: "Stage à l'international", en: "International internship" },
@@ -436,6 +713,12 @@ const PROJECTS = {
     },
     thumb: "images/vignettes/sonde-echographique.jpg",
     hero: "images/sonde-echographique/01.jpg",
+    facts: [
+      { k: { fr: "Équipe", en: "Team" }, v: { fr: "11 étudiants", en: "11 students" } },
+      { k: { fr: "Partenaire", en: "Partner" }, v: { fr: "Entreprise VERNON", en: "VERNON (company)" } },
+      { k: { fr: "Cadre", en: "Context" }, v: { fr: "Projet tuteuré de BUT 3", en: "BUT year-3 supervised project" } },
+      { k: { fr: "Outils", en: "Tools" }, v: { fr: "Python (Tkinter) · oscilloscope LAN", en: "Python (Tkinter) · LAN oscilloscope" } },
+    ],
     sections: [
       {
         h: { fr: "Contexte et objectifs", en: "Context and objectives" },
@@ -528,12 +811,18 @@ const PROJECTS = {
     },
     thumb: "images/vignettes/stage-technicien.jpg",
     hero: "images/stage-technicien/01.jpg",
+    facts: [
+      { k: { fr: "Entreprise", en: "Company" }, v: { fr: "ArianeGroup", en: "ArianeGroup" } },
+      { k: { fr: "Lieu", en: "Location" }, v: { fr: "Vernon (Eure)", en: "Vernon, France" } },
+      { k: { fr: "Durée", en: "Duration" }, v: { fr: "14 semaines, 2025", en: "14 weeks, 2025" } },
+      { k: { fr: "Outils", en: "Tools" }, v: { fr: "Python · EtherCAT · Modbus", en: "Python · EtherCAT · Modbus" } },
+    ],
     sections: [
       {
         h: { fr: "Technicien analyste banc d'essai moteur fusée", en: "Test analyst, rocket engine test bench" },
         blocks: [{ p: {
-          fr: "Stage de 13 semaines — zone d'essais de Vernon (Eure, 27).",
-          en: "13-week internship — test site in Vernon (Eure, France).",
+          fr: "Stage de 14 semaines — zone d'essais de Vernon (Eure, 27).",
+          en: "14-week internship — test site in Vernon (Eure, France).",
         } }],
         imgs: ["images/stage-technicien/02.jpg"],
       },
@@ -586,7 +875,121 @@ const PROJECTS = {
   },
 };
 
+/* Bilan de compétences.
+   Chaque compétence : name, desc, et proofs = identifiants des projets où elle a été mise en œuvre. */
 const SKILLS_PAGE = {
   title: { fr: "Bilan de compétences", en: "Skills summary" },
-  images: ["images/bilan/01.jpg"],
+  intro: {
+    fr: "Ce bilan rassemble ce que je sais faire aujourd'hui. La spécialité SEI de Phelma forme le cœur de mon profil ; le BUT Mesures Physiques m'a apporté un socle en instrumentation et en métrologie que je mobilise dans mes projets d'électronique. Chaque compétence renvoie aux projets où je l'ai mise en œuvre.",
+    en: "This summary gathers what I can do today. The SEI specialisation at Phelma is the core of my profile; the BUT in Physical Measurements gave me a foundation in instrumentation and metrology that I use in my electronics projects. Each skill links to the projects where I applied it.",
+  },
+  groups: [
+    {
+      featured: true,
+      tag:   { fr: "Spécialité · Grenoble INP – Phelma, SEI", en: "Specialisation · Grenoble INP – Phelma, SEI" },
+      title: { fr: "Conception de circuits intégrés", en: "Integrated circuit design" },
+      items: [
+        { name: { fr: "Conception numérique RTL", en: "Digital RTL design" },
+          desc: { fr: "SystemVerilog : FSM synthétisables, chemins de données, interfaces ADC/DAC.", en: "SystemVerilog: synthesisable FSMs, datapaths, ADC/DAC interfaces." },
+          proofs: ["filtre-rif"] },
+        { name: { fr: "Vérification", en: "Verification" },
+          desc: { fr: "Bancs de test, Lint SpyGlass, simulations post-synthèse et post-placement-routage.", en: "Testbenches, SpyGlass Lint, post-synthesis and post-place-and-route simulation." },
+          proofs: ["filtre-rif"] },
+        { name: { fr: "Synthèse logique ASIC", en: "ASIC logic synthesis" },
+          desc: { fr: "Synopsys Design Compiler sur cellules AMS 0,35 µm : contraintes, chemin critique, slacks, consommation.", en: "Synopsys Design Compiler on AMS 0.35 µm cells: constraints, critical path, slacks, power." },
+          proofs: ["filtre-rif"] },
+        { name: { fr: "Placement-routage", en: "Place-and-route" },
+          desc: { fr: "Cadence Innovus : floorplan, alimentation, arbre d'horloge, routage, DRC.", en: "Cadence Innovus: floorplan, power grid, clock tree, routing, DRC." },
+          proofs: ["filtre-rif"] },
+        { name: { fr: "Cellules standard full-custom", en: "Full-custom standard cells" },
+          desc: { fr: "Dimensionnement et layout CMOS sous Cadence Virtuoso, DRC/LVS Calibre, simulation post-extraction.", en: "CMOS sizing and layout in Cadence Virtuoso, Calibre DRC/LVS, post-extraction simulation." },
+          proofs: ["filtre-rif"] },
+        { name: { fr: "Prototypage FPGA", en: "FPGA prototyping" },
+          desc: { fr: "Synthèse et implémentation sur Xilinx Spartan-7 (Precision, Vivado), comparaison avec l'ASIC.", en: "Synthesis and implementation on Xilinx Spartan-7 (Precision, Vivado), compared with the ASIC." },
+          proofs: ["filtre-rif"] },
+        { name: { fr: "Traitement numérique du signal", en: "Digital signal processing" },
+          desc: { fr: "Filtrage RIF, architecture multiplieur-accumulateur, réponses impulsionnelle et indicielle.", en: "FIR filtering, multiply-accumulate architecture, impulse and step responses." },
+          proofs: ["filtre-rif"] },
+        { name: { fr: "Analogique, mixte et RF", en: "Analog, mixed-signal and RF" },
+          desc: { fr: "Technologie CMOS, blocs analogiques, bases des chaînes RF (Cadence Virtuoso, LTspice).", en: "CMOS technology, analog blocks, RF chain fundamentals (Cadence Virtuoso, LTspice)." },
+          proofs: [] },
+        { name: { fr: "Systèmes embarqués autonomes", en: "Autonomous embedded systems" },
+          desc: { fr: "Microcontrôleurs en C, interfaces capteurs, gestion d'énergie et modes veille.", en: "Microcontrollers in C, sensor interfaces, energy management and sleep modes." },
+          proofs: ["energie-spatiale", "chaine-mesure"] },
+      ],
+    },
+    {
+      tag:   { fr: "Socle · BUT Mesures Physiques", en: "Foundation · BUT Physical Measurements" },
+      title: { fr: "Instrumentation et mesure", en: "Instrumentation and measurement" },
+      items: [
+        { name: { fr: "Conception de chaînes de mesure", en: "Measurement chain design" },
+          desc: { fr: "Du capteur à l'acquisition et à l'affichage des données.", en: "From sensor to data acquisition and display." },
+          proofs: ["sonde-echographique", "nitrites", "chaine-mesure"] },
+        { name: { fr: "Chaînes d'instrumentation", en: "Instrumentation chains" },
+          desc: { fr: "Banc de plus de 700 voies, acquisition EtherCAT et Modbus, paramètres de filtrage.", en: "700+ channel test bench, EtherCAT and Modbus acquisition, filter settings." },
+          proofs: ["stage-technicien"] },
+        { name: { fr: "Conditionnement de signal", en: "Signal conditioning" },
+          desc: { fr: "Amplification, filtrage et adaptation d'impédance entre capteur et acquisition.", en: "Amplification, filtering and impedance matching between sensor and acquisition." },
+          proofs: ["sonde-echographique", "nitrites"] },
+        { name: { fr: "Métrologie et incertitudes", en: "Metrology and uncertainty" },
+          desc: { fr: "Étalonnage, calcul d'incertitudes, respect d'un cahier des charges métrologique.", en: "Calibration, uncertainty analysis, meeting a metrological specification." },
+          proofs: ["nitrites", "pendule"] },
+        { name: { fr: "Analyse de mesures et d'anomalies", en: "Measurement and anomaly analysis" },
+          desc: { fr: "Investigation des anomalies capteurs, exploitation et interprétation de résultats.", en: "Sensor anomaly investigation, processing and interpreting results." },
+          proofs: ["stage-technicien", "stage-ultrasons"] },
+      ],
+    },
+  ],
+  tools: {
+    title: { fr: "Logiciels et langages", en: "Software and languages" },
+    rows: [
+      { label: { fr: "Conception de circuits", en: "Circuit design" }, items: ["Cadence Virtuoso", "Cadence Innovus", "Synopsys Design Compiler", "Calibre (DRC/LVS)", "SpyGlass", "LTspice"] },
+      { label: { fr: "FPGA", en: "FPGA" }, items: ["Xilinx Vivado", "Precision"] },
+      { label: { fr: "Cartes et mécanique", en: "Boards and mechanics" }, items: ["KiCad (PCB)", "Fusion 360 (DAO)"] },
+      { label: { fr: "Langages", en: "Languages" }, items: ["SystemVerilog", "C", "Python"] },
+      { label: { fr: "Environnement", en: "Environment" }, items: ["Linux", "Docker"] },
+    ],
+  },
+  languages: {
+    title: { fr: "Langues", en: "Languages" },
+    items: [
+      { name: { fr: "Français", en: "French" }, level: { fr: "Langue maternelle", en: "Native" } },
+      { name: { fr: "Anglais", en: "English" }, level: { fr: "TOEIC 910 (B2+), 2025 · Cambridge B2, 2022", en: "TOEIC 910 (B2+), 2025 · Cambridge B2, 2022" },
+        note: { fr: "Stage de recherche de 11 semaines en anglais et co-auteur d'un article scientifique publié en anglais.", en: "11-week research internship in English and co-author of a scientific paper published in English." } },
+    ],
+  },
+  extra: {
+    tag:   { fr: "En autodidacte", en: "Self-taught" },
+    title: { fr: "IA et outils informatiques", en: "AI and computing tools" },
+    intro: { fr: "Un centre d'intérêt personnel devenu un outil de travail, au service de mes projets d'électronique.", en: "A personal interest that became a working tool, in support of my electronics projects." },
+    items: [
+      { name: { fr: "Usage encadré de l'IA", en: "Supervised use of AI" },
+        desc: { fr: "Référent IA d'une équipe de 10 : registre des usages, choix de l'outil adapté, vérification des réponses.", en: "AI lead for a team of 10: usage log, choosing the right tool, checking the answers." },
+        proofs: ["energie-spatiale"] },
+      { name: { fr: "Prompts et assistants de code", en: "Prompting and coding assistants" },
+        desc: { fr: "Rédaction de prompts précis ; simulations Python générées avec Claude Code, puis vérifiées.", en: "Writing precise prompts; Python simulations generated with Claude Code, then verified." },
+        proofs: ["energie-spatiale"] },
+      { name: { fr: "IA en local", en: "Local AI" },
+        desc: { fr: "Installation et utilisation de modèles sur ma propre machine ; veille sur les nouveautés.", en: "Installing and running models on my own machine; keeping up with new releases." } },
+      { name: { fr: "Linux et Docker", en: "Linux and Docker" },
+        desc: { fr: "Environnements de travail sous Linux, services déployés en conteneurs.", en: "Linux working environments, services deployed in containers." } },
+    ],
+  },
+  soft: {
+    title: { fr: "Savoir-être", en: "Soft skills" },
+    items: [
+      { name: { fr: "Travail en équipe", en: "Teamwork" },
+        desc: { fr: "Projets à 10 et 11 personnes : planning Gantt, outils partagés, jalons d'avancement.", en: "Projects with teams of 10 and 11: Gantt planning, shared tools, progress milestones." },
+        proofs: ["energie-spatiale", "sonde-echographique"] },
+      { name: { fr: "Rigueur", en: "Rigour" },
+        desc: { fr: "Vérification de plus de 700 voies de mesure sur un banc d'essai moteur ; contrôle qualité de pièces de précision en atelier.", en: "Checking 700+ measurement channels on an engine test bench; quality control of precision parts in a workshop." },
+        proofs: ["stage-technicien", "stage-ouvrier"] },
+      { name: { fr: "Autonomie", en: "Autonomy" },
+        desc: { fr: "Stage de recherche à l'étranger, en anglais, sur un sujet nouveau.", en: "Research internship abroad, in English, on a new subject." },
+        proofs: ["stage-ultrasons"] },
+      { name: { fr: "Adaptabilité", en: "Adaptability" },
+        desc: { fr: "Passage de la mesure physique à la conception de circuits intégrés.", en: "Moving from physical measurement to integrated circuit design." },
+        proofs: ["filtre-rif"] },
+    ],
+  },
 };
