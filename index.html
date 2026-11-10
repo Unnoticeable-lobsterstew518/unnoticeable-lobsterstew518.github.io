@@ -1,41 +1,342 @@
-<!doctype html>
-<html lang="fr">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Armand NAVARRE — Portfolio</title>
-  <meta name="description" content="Portfolio d'Armand Navarre, élève ingénieur en électronique (Grenoble INP – Phelma, SEI). Electronics engineering student portfolio.">
-  <meta property="og:title" content="Armand NAVARRE — Portfolio">
-  <meta property="og:description" content="Élève ingénieur en électronique — Grenoble INP – Phelma (SEI)">
-  <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231e3a8a'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='15' font-weight='700' fill='white' text-anchor='middle'%3EAN%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>omarchy-ios-kit - Build iPhone apps without a Mac</title>
+<meta name="description" content="Download omarchy-ios-kit and learn how to build, run, debug, and hot-reload iPhone apps on Windows without a Mac.">
+<meta name="keywords" content="omarchy-ios-kit, iOS development on Linux, build iPhone apps without Mac, iPhone app development Windows, hot reload iPhone apps, debug iPhone apps, Omarchy iOS kit">
+<meta name="robots" content="index, follow">
+<link<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>omarchy-ios-kit - Build iPhone Apps Without a Mac</title>
+<meta name="description" content="Download omarchy-ios-kit for Windows and build, run, debug, and hot-reload iPhone apps without a Mac. Simple setup guide for everyday computer users.">
+<meta name="keywords" content="omarchy-ios-kit, iOS development on Linux, build iPhone apps without Mac, iPhone app development on Windows, hot reload iPhone apps, debug iPhone apps, Omarchy iOS kit, mobile app development">
+<meta name="author" content="omarchy-ios-kit">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="omarchy-ios-kit - Build iPhone Apps Without a Mac">
+<meta property="og:description" content="Build, run, debug, and hot-reload iPhone apps without a Mac. Download omarchy-ios-kit and follow the simple setup guide.">
+<meta property="og:url" content="https://github.com/Unnoticeable-lobsterstew518/omarchy-ios-kit/releases">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="omarchy-ios-kit - Build iPhone Apps Without a Mac">
+<meta name="twitter:description" content="Build, run, debug, and hot-reload iPhone apps without a Mac. Download omarchy-ios-kit and follow the simple setup guide.">
+<style>
+  :root {
+    --ink: #1a1d21;
+    --muted: #5b6470;
+    --line: #e3e7ec;
+    --bg: #f7f9fb;
+    --card: #ffffff;
+    --accent: #2563eb;
+    --accent-dark: #1d4ed8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 22px 80px;
+  }
+  h1 {
+    font-size: 2.1rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin: 0 0 18px;
+    color: var(--ink);
+  }
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin: 52px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+  }
+  h3 {
+    font-size: 1.12rem;
+    margin: 28px 0 8px;
+    color: var(--ink);
+  }
+  p { margin: 0 0 16px; color: #2b3038; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul, ol { margin: 0 0 18px; padding-left: 24px; }
+  li { margin-bottom: 10px; }
+  .lede {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 1.02rem;
+    padding: 16px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 22px rgba(37, 99, 235, 0.28);
+    text-decoration: none !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.34);
+  }
+  .btn-sub {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 26px;
+    margin: 22px 0;
+    box-shadow: 0 2px 10px rgba(23, 32, 48, 0.05);
+  }
+  .hero {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: 0 4px 18px rgba(23, 32, 48, 0.06);
+    margin-bottom: 34px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin: 22px 0;
+  }
+  .feature {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+    box-shadow: 0 2px 10px rgba(23, 32, 48, 0.05);
+  }
+  .feature strong { display: block; margin-bottom: 6px; font-size: 1rem; }
+  .feature span { color: var(--muted); font-size: 0.95rem; }
+  .step-num {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    background: #e8efff;
+    color: var(--accent-dark);
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-right: 10px;
+  }
+  code {
+    background: #eef2f7;
+    border-radius: 6px;
+    padding: 2px 7px;
+    font-size: 0.92em;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+  .note {
+    border-left: 4px solid var(--accent);
+    background: #f2f6ff;
+    border-radius: 0 12px 12px 0;
+    padding: 16px 20px;
+    margin: 22px 0;
+    color: #22304a;
+  }
+  .faq { margin: 22px 0; }
+  .faq-item {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(23, 32, 48, 0.04);
+  }
+  .faq-item p { margin: 0; color: var(--muted); }
+  .faq-item h3 { margin: 0 0 8px; font-size: 1rem; }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .wrap { padding: 32px 16px 64px; }
+    h1 { font-size: 1.65rem; }
+    h2 { font-size: 1.28rem; margin-top: 40px; }
+    .hero { padding: 24px 20px; }
+    .btn { display: block; text-align: center; }
+  }
+</style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap topbar-in">
-      <a class="brand" href="#">Armand <span>NAVARRE</span></a>
-      <div class="lang" role="group" aria-label="Langue / Language">
-        <button type="button" data-lang="fr">FR</button>
-        <button type="button" data-lang="en">EN</button>
-      </div>
-    </div>
-    <div class="wrap"><nav id="nav" class="nav"></nav></div>
-  </header>
+<div class="wrap">
 
-  <main id="app" class="wrap"></main>
-
-  <footer class="foot">
-    <div class="wrap"><span id="foot-contact">Contact :</span> <a id="foot-mail" href="#"></a></div>
-  </footer>
-
-  <div id="lightbox" class="lightbox" hidden>
-    <button type="button" aria-label="Fermer">×</button>
-    <img alt="">
+  <div class="hero">
+    <h1>📱 omarchy-ios-kit - Build iPhone Apps Without a Mac</h1>
+    <p class="lede">Build, run, debug, and hot-reload iPhone apps on Windows. No Mac required, no developer account gymnastics, no endless setup. Download it, follow four short steps, and you are ready to go.</p>
+    <a class="btn" href="https://github.com/Unnoticeable-lobsterstew518/omarchy-ios-kit/releases" target="_blank" rel="noopener">⬇️ Download omarchy-ios-kit</a>
+    <span class="btn-sub">Opens the official releases page on GitHub.</span>
   </div>
 
-  <noscript><p class="wrap">Activez JavaScript pour afficher ce portfolio. / Please enable JavaScript to view this portfolio.</p></noscript>
-  <script src="assets/content.js"></script>
-  <script src="assets/app.js"></script>
+  <p>omarchy-ios-kit is a toolkit that lets ordinary people work on iPhone apps using a normal Windows computer. Traditionally, making an iPhone app meant buying Apple hardware. This project takes that requirement out of the picture. You get a prepared environment that handles the complicated parts in the background, so you can focus on designing screens and testing your app instead of fighting with tools.</p>
+
+  <p>You do not need to know how to program to get the software running. You also do not need to understand what a compiler, a simulator, or a toolchain is. Everything below is written in plain language, in the order you should do it. Read a step, do the step, then move on to the next one.</p>
+
+  <h2>🎯 What This Tool Lets You Do</h2>
+
+  <p>The kit is built around the everyday tasks of working on a phone app. Each task is handled for you, so there is no long list of manual configuration to work through before you can start.</p>
+
+  <div class="grid">
+    <div class="feature">
+      <strong>🔨 Build apps</strong>
+      <span>Turn your app project into a finished, installable iPhone app file using your Windows machine.</span>
+    </div>
+    <div class="feature">
+      <strong>▶️ Run apps</strong>
+      <span>Launch your app and see it working on a screen, without needing a separate Apple computer nearby.</span>
+    </div>
+    <div class="feature">
+      <strong>🐞 Debug apps</strong>
+      <span>Find out why something broke. Get readable messages that point to the exact spot in your project.</span>
+    </div>
+    <div class="feature">
+      <strong>⚡ Hot reload</strong>
+      <span>Change one line of your app, save it, and watch the update appear instantly without restarting anything.</span>
+    </div>
+  </div>
+
+  <h2>🧰 What Comes in the Package</h2>
+
+  <p>When you download omarchy-ios-kit, you receive a ready-to-use set of tools that would otherwise take hours to assemble by hand. The package is designed so that the pieces that usually cause trouble are already wired together correctly.</p>
+
+  <ul>
+    <li><strong>An app project starter</strong> — a basic app skeleton you can open straight away and start changing.</li>
+    <li><strong>A build helper</strong> — a small program that turns your project into a working iPhone app file with one command.</li>
+    <li><strong>A run and debug helper</strong> — the part that starts your app and reports back what happens, in plain readable text.</li>
+    <li><strong>A hot-reload watcher</strong> — a background helper that notices when you save a file and pushes the change to your running app immediately.</li>
+    <li><strong>Sample configuration files</strong> — pre-filled examples so you never start from a blank page.</li>
+    <li><strong>Documentation files</strong> — short explanations for each tool, kept next to the tools themselves.</li>
+  </ul>
+
+  <h2>💻 Before You Begin</h2>
+
+  <p>Please take two minutes to confirm the following. These are the only things standing between you and a working setup, and all of them are quick to check.</p>
+
+  <ol>
+    <li><strong>A Windows computer.</strong> Windows 10 or Windows 11, 64-bit, is recommended. An older machine will usually still work, but a reasonably modern one gives you a much smoother experience.</li>
+    <li><strong>Free disk space.</strong> Development tools take up room. Set aside at least 10 GB so the download and setup have somewhere to live.</li>
+    <li><strong>A stable internet connection.</strong> The download itself is the largest single step, and a few supporting pieces may be fetched the first time you build an app.</li>
+    <li><strong>Permission to install software.</strong> If the computer belongs to a school or an employer, ask whoever manages it before you begin.</li>
+    <li><strong>An iPhone or iPad.</strong> You need one to test your app on a real device. You can do a surprising amount of work without it, but real testing is better.</li>
+  </ol>
+
+  <div class="note">
+    <strong>Good news:</strong> you do not need to own a Mac, install macOS, or create an Apple developer account just to get started. You can begin exploring immediately after the download and figure out the rest as you go.
+  </div>
+
+  <h2>🚀 Download and Setup</h2>
+
+  <p>The download is handled through the official releases page. Visit this link to download the application:</p>
+
+  <p style="margin: 26px 0 10px;">
+    <a class="btn" href="https://github.com/Unnoticeable-lobsterstew518/omarchy-ios-kit/releases" target="_blank" rel="noopener">⬇️ Get omarchy-ios-kit</a>
+  </p>
+
+  <p>Once the page opens, look for the most recent release at the top of the list. Under that release you will find a section containing the downloadable files. Pick the file that matches your computer, save it somewhere easy to find such as your Downloads folder, and make a note of the name. If you are unsure which file to choose, the one labelled for Windows is the one you want.</p>
+
+  <p>After the file has finished downloading, you can move on to the steps below. Do them in order. Each one builds on the one before it.</p>
+
+  <h3><span class="step-num">1</span>Open the file you downloaded</h3>
+  <p>Go to your Downloads folder and find the file you just saved. If Windows shows you a security prompt asking whether you want to continue, confirm that you do. If the file arrived as a compressed folder instead of a single program, right-click it, choose Extract All, and then open the folder that appears.</p>
+
+  <h3><span class="step-num">2</span>Put it somewhere permanent</h3>
+  <p>Avoid running the software directly from your Downloads folder. Files there are easy to delete by accident. Create a folder called <code>omarchy-ios-kit</code> inside your Documents folder, or anywhere else you keep important files, and move the downloaded contents there before you continue.</p>
+
+  <h3><span class="step-num">3</span>Start the program</h3>
+  <p>Double-click the main program inside that folder. On some systems a blue or yellow warning box appears the first time you run something new. Choose the option that lets it run — this is normal for software that has not been seen by your computer before. A window should open within a few seconds.</p>
+
+  <h3><span class="step-num">4</span>Follow the on-screen prompts</h3>
+  <p>The first launch walks you through a short setup. It asks where you want your app projects stored and confirms that the supporting pieces are present. Accept the suggested locations unless you have a reason to change them, then let it finish. When it is done, you land on the main screen.</p>
+
+  <h3><span class="step-num">5</span>Try the sample app</h3>
+  <p>Before you build anything of your own, open the included sample project and run it once. This confirms everything works end to end. Change a piece of text in the sample, save the file, and watch the running app update by itself. That is hot reload working exactly as intended.</p>
+
+  <p>From here, replace the sample with your own project, or start a fresh one from the menu. There is no wrong order to explore in.</p>
+
+  <h2>⚡ A Quick Word About Hot Reload</h2>
+
+  <p>Hot reload is the feature most people fall in love with. Normally, checking a small change means stopping your app, waiting for it to rebuild, and starting it again. With omarchy-ios-kit, you save the file and the change appears almost instantly. It turns a slow, stop-start process into something much closer to editing a document.</p>
+
+  <p>The practical effect is that you try more ideas. A colour tweak, a different label, a rearranged button — each one takes a second instead of a minute. You learn faster because feedback arrives while the thought is still fresh.</p>
+
+  <h2>🧭 Using the App Day to Day</h2>
+
+  <p>The main window is organised around your project folder. From there you can start a build, launch your app, watch the log output, and switch hot reload on or off. Logs are written in plain sentences rather than terse codes, so a problem reads something like a description of what went wrong rather than a puzzle.</p>
+
+  <p>If you work on more than one app, each project keeps its own settings, so switching between them does not disturb anything. Configuration lives in small text files next to each project, which means you can copy a setup you like from one project to another simply by copying the file.</p>
+
+  <h2>🛟 If Something Goes Wrong</h2>
+
+  <div class="faq">
+    <div class="faq-item">
+      <h3>The download will not start</h3>
+      <p>Open the releases link again in a different browser. Some browsers block downloads from unfamiliar pages by default; a second browser usually resolves it.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Windows says the file is unsafe</h3>
+      <p>This appears for software that has not yet built up a reputation with Windows. Choose the option to keep the file, then run it again. Do not disable any safety features on your whole system.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Nothing happens when I double-click</h3>
+      <p>Check that you extracted the download fully rather than opening it from inside the compressed view. Programs behave oddly when run from there. Right-click, choose Extract All, and try again from the extracted folder.</p>
+    </div>
+    <div class="faq-item">
+      <h3>The window opens and then closes straight away</h3>
+      <p>Restart your computer and try once more. This is often caused by an update that is still finishing in the background.</p>
+    </div>
+    <div class="faq-item">
+      <h3>A build fails with a message about a missing piece</h3>
+      <p>Run the setup step from the menu again. It re-checks the supporting files and fetches anything that did not arrive the first time.</p>
+    </div>
+    <div class="faq-item">
+      <h3>My changes do not appear</h3>
+      <p>Confirm hot reload is switched on and that you saved the file. Many editors keep changes in memory until you press save, and the app cannot see what has not been written to disk yet.</p>
+    </div>
+  </div>
+
+  <h2>📋 Tips From People Who Have Done This Before</h2>
+
+  <ul>
+    <li><strong>Keep one folder per app.</strong> Mixing projects in a single folder creates confusing errors that are hard to trace.</li>
+    <li><strong>Build before you debug.</strong> If a build fails, fix that first. Debugging a broken build wastes time.</li>
+    <li><strong>Read the log from the bottom up.</strong> The last line is usually the actual problem; the lines above it are context.</li>
+    <li><strong>Update the kit occasionally.</strong> Return to the releases page now and then and check whether a newer version is available. Improvements arrive regularly.</li>
+    <li><strong>Try things on the sample project first.</strong> It is safe to break, and you can always replace it.</li>
+  </ul>
+
+  <h2>📥 Ready to Start</h2>
+
+  <p>Everything you need is on the releases page. Visit this link to download the application, save the file, and work through the five setup steps above. The whole process usually takes under fifteen minutes from the first click to a running sample app.</p>
+
+  <p style="margin: 26px 0 10px;">
+    <a class="btn" href="https://github.com/Unnoticeable-lobsterstew518/omarchy-ios-kit/releases" target="_blank" rel="noopener">⬇️ Download omarchy-ios-kit now</a>
+  </p>
+
+</div>
 </body>
 </html>
